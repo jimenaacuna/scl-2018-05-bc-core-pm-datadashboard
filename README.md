@@ -25,3 +25,9 @@ Los datos mas relevantes son: filtrar información, que este ordenada de forma a
 
 1. Sketch de la solución (prototipo de baja fidelidad)
 
+
+![image1](https://user-images.githubusercontent.com/39282705/41627032-993eb528-73ec-11e8-8fe8-49cf40467870.jpeg)
+![image2](https://user-images.githubusercontent.com/39282705/41627578-d233e626-73ee-11e8-94da-2448ad2957a0.jpeg)
+![image3](https://user-images.githubusercontent.com/39282705/41627581-d55f911a-73ee-11e8-9b04-ced0a5b2a3bb.jpeg)
+
+
