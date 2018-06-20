@@ -5,16 +5,23 @@
   color: aqua;
 }
 .btn{
-  font-size: 20px;
+  font-size: 25px;
+  
 }
 .dropdown-menu {
   font-size: 15px;
 }
 
 img{
-  max-width: 100%;
-  margin-top: 110px;
+  
+  margin-top:40px;
+  
 
+}
+
+.col-xs-5 , .col-xs-7 {
+  background-color: #EBDF00;
+  color: white;
 }
 
 
