@@ -23,11 +23,21 @@ Al analizar todos los datos otorgados por el usuario, podemos determinar que se 
 Los datos mas relevantes son: filtrar información, que este ordenada de forma ascendente y descendiente para poder analizar el nivel de completitud y los progresos alcanzados.
 
 
-1. Sketch de la solución (prototipo de baja fidelidad)
+## 1. Sketch de la solución (prototipo de baja fidelidad)
 
 
 ![image1](https://user-images.githubusercontent.com/39282705/41627032-993eb528-73ec-11e8-8fe8-49cf40467870.jpeg)
 ![image2](https://user-images.githubusercontent.com/39282705/41627578-d233e626-73ee-11e8-94da-2448ad2957a0.jpeg)
 ![image3](https://user-images.githubusercontent.com/39282705/41627581-d55f911a-73ee-11e8-9b04-ced0a5b2a3bb.jpeg)
 
+## 3) Diseño de la Interfaz de Usuario (prototipo de alta fidelidad)
 
+Esta Interfaz fue realizada en MARVEL.
+
+https://marvelapp.com/6g60d28
+
+Fue diseñado respetando la linea gráfica del manual de marca de Laboratoria y el uso de los datos recopilador de la entrevista al target. Además de los fundamentos de visual desing.
+
+## 4) Planning
+
+https://trello.com/b/XNM8fRYq
