@@ -4,47 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/src/css/bootstrap.css">
+  <link rel="stylesheet" href="/src/css/style.css">
   
   <title>Data dashboard</title>
   
 </head>
 <body>
-
-  <div id="dOGES"></div>
+  <button>user</button>
+  <div id="root"></div>
   
-
   <section class="container-fluid">
-    <div class="row">
-      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-        <img id="imgLogoPrincipal" src="img/unnamed.png">
+    <div class="row">      
+      
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <img src="img/unnamed.png" class="img-fluid align-middle">
       </div>
+      
     </div>
   </section>
 
-<section class="container-fluid"> 
-  <div class="row"> 
-  <div class="dropdown">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <button onclick="myFunction()" class="dropbtn">Sede</button>
-      <div id="myDropdown" class="dropdown-content">
-        <a href="#home">Lima</a>
-        <a href="#about">México</a>
-        <a href="#contact">Chile</a>
-        <a href="#contactt">Brasil</a>
+  <br />
+  <br />
 
-      
+  <section class="container">
+    <div class="row">
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <div class="dropdown">
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Seleccionar sede
+              </a>
+            
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">Lima</a>
+                <a class="dropdown-item" href="#">México</a>
+                <a class="dropdown-item" href="#">Brasil</a>
+                <a class="dropdown-item" href="#">Chile</a>
+              </div>
+            </div>      
+      </div>   
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
     </div>
-  </div>  
-  </div>
-  </div>
-    </section>
+  </section>
   
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
     <script src="js/bootstrap.min.js"></script>
+   
   <script src="js/main.js"></script>
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
