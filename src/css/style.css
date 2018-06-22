@@ -1,8 +1,6 @@
 body{
   font-family: 'Open Sans', sans-serif;
 }
-
-
 .container {
   max-width: 65%;
 }
@@ -10,42 +8,88 @@ body{
   color: aqua;
 }
 .btn{
-  font-size: 25px;
+  position: fixed;
+  top:50%;
+  left: 42%;
+  right: 42%;
+  font-size: 20px;
   
 }
 .dropdown-menu {
-  font-size: 15px;
+  font-size: 20px;
 }
 
 img{
+  position: fixed;
+  left: 24%;
+  right: 24%; 
+  margin-top:60px;
+  width: 40%;
   
-  margin-top:40px;
-  
-
 }
 
 .col-xs-5 , .col-xs-7 {
   background-color: #EBDF00;
   color: white;
+  height: 50px;
 }
 
 
 
 @media (max-width: 575.98px) {
+  .btn{
+    position: fixed;
+    left: 25%;
+    right: 25%;
+    font-size: 15px;}
+  .img {
+    left: 25%;
+  right: 25%;
+  }  
  
 }
 
 
-@media (min-width: 576px) and (max-width: 767.98px) {}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .btn{
+    position: fixed;
+    left: 30%;
+    right: 30%;}
+    .img {
+      left: 3%;
+    right: 3%;
+    }
+}
 
 
-@media (min-width: 768px) and (max-width: 991.98px) {}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .btn{
+    position: fixed;
+    left: 35%;
+    right: 35%;}
+
+    .img {
+      left: 15%;
+    right: 15%;
+    }
+}
 
 
-@media (min-width: 992px) and (max-width: 1199.98px) {}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .btn{
+    position: fixed;
+    left: 40%;
+    right: 40%;} 
+}
 
 
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+  .img {
+    left: 30%;
+  right: 30%;
+  }
+  
+}
 
 
 
