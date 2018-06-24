@@ -1,6 +1,8 @@
+
 body{
   font-family: 'Open Sans', sans-serif;
 }
+/* primera vista */
 .container {
   max-width: 65%;
 }
@@ -8,103 +10,191 @@ body{
   color: aqua;
 }
 .btn{
-  position: fixed;
-  top:50%;
-  left: 42%;
-  right: 42%;
   font-size: 20px;
-  
 }
 .dropdown-menu {
-  font-size: 20px;
+  font-size: 15px;
 }
 
-img{
-  position: fixed;
-  left: 24%;
-  right: 24%; 
-  margin-top:60px;
-  width: 40%;
-  
+.img-fluid{
+  max-width: 100%;
+  margin-top: 110px;
 }
 
-.col-xs-5 , .col-xs-7 {
-  background-color: #EBDF00;
+
+
+@media (max-width: 575.98px) {}
+
+
+@media (min-width: 576px) and (max-width: 767.98px) {}
+
+
+@media (min-width: 768px) and (max-width: 991.98px) {}
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) {}
+
+
+@media (min-width: 1200px) {}
+
+
+/* segunda vista */
+
+.navbar-global {
+background-color: white;
+padding: 0 auto;
+}
+
+img { 
+  margin: 4%; 
+  display: block; 
+  width: 100%;
+  height: auto;
+}
+
+.navbar-global .navbar-brand {
   color: white;
-  height: 50px;
 }
 
-
-
-@media (max-width: 575.98px) {
-  .btn{
-    position: fixed;
-    left: 25%;
-    right: 25%;
-    font-size: 15px;}
-  .img {
-    left: 25%;
-  right: 25%;
-  }  
- 
+.navbar-global .navbar-user > li > a
+{
+  color: white;
 }
 
-
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .btn{
-    position: fixed;
-    left: 30%;
-    right: 30%;}
-    .img {
-      left: 3%;
-    right: 3%;
-    }
+.navbar-primary {
+  background-color: #FFE521;
+  bottom: 0px;
+  left: 0px;
+  position: absolute;
+  top: 80px;
+  width: 200px;
+  z-index: 1;
+  overflow: hidden;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
-
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .btn{
-    position: fixed;
-    left: 35%;
-    right: 35%;}
-
-    .img {
-      left: 15%;
-    right: 15%;
-    }
+.navbar-primary.collapsed {
+  width: 60px;
 }
 
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .btn{
-    position: fixed;
-    left: 40%;
-    right: 40%;} 
+.navbar-primary.collapsed .glyphicon {
+  font-size: 22px;
 }
 
+.navbar-primary.collapsed .nav-label {
+  display: none;
+}
 
-@media (min-width: 1200px) {
-  .img {
-    left: 30%;
-  right: 30%;
-  }
+.btn-expand-collapse {
+    position: absolute;
+    display: block;
+    left: 0px;
+    bottom:0;
+    width: 100%;
+    padding: 8px 0;
+    border-top:solid 1px #666;
+    color: grey;
+    font-size: 20px;
+    text-align: center;
+}
+
+.btn-expand-collapse:hover,
+.btn-expand-collapse:focus {
+    background-color: #FF009E;
+    color: white;
+}
+
+.btn-expand-collapse:active {
+    background-color: #FF009E;
+}
+
+.navbar-primary-menu,
+.navbar-primary-menu li {
+  margin:0; padding:0;
+  list-style: none;
+}
+
+.navbar-primary-menu li a {
+  display: block;
+  padding: 10px 18px;
+  text-align: left;
+  border-bottom:solid 1px #000000;
+  color: #000000;
+}
+
+.navbar-primary-menu li a:hover {
+  background-color: #FFE521;
+  text-decoration: none;
+  color: #FF009E;
+}
+
+.navbar-primary-menu li a .glyphicon {
+  margin-right: 6px;
+}
+
+.navbar-primary-menu li a:hover .glyphicon {
+  color: orchid;
+}
+
+.main-content {
+  /* display: none; */
+  margin-top: 4px;
+  margin-left: 100px;
+  padding: 0px;
+}
+
+.collapsed + .main-content {
+  margin-left: 60px;
+}
+
+/* tabla */
+
+@media screen and (max-width: 600px) {
+       table {
+           width:100%;
+       }
+       thead {
+           display: none;
+       }
+       tr:nth-of-type(2n) {
+           background-color: inherit;
+       }
+       tr td:first-child {
+           background: #f0f0f0;
+           font-weight:bold;
+           font-size:1.3em;
+       }
+       tbody td {
+           display: block;
+           text-align:center;
+       }
+       tbody td:before {
+           content: attr(data-th);
+           display: block;
+           text-align:center;
+       }
+}
+.tabla{
+  overflow-y: scroll;
+}
   
+
+.textbox {
+  height: 700px;
 }
 
+.progress {
+  margin-bottom: 10px;
+}
 
+.progress-bar {
+  width: 0;
+}
 
+#barraProgress{
+  margin-top: 5%;
+  margin-left: 35%;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
