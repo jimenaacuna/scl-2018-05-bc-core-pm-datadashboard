@@ -8,8 +8,7 @@ Promise.all([ // Ejecuta todas las llamadas de manera paralela.
   let users = responseJsons[0];
   let progress = responseJsons[1];
   let cohorts = responseJsons[2];
-  
-  muestraCohorts(users);
+  muestraCohorts(cohorts);
   const cohort = cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
   const courses = Object.keys(cohort.coursesIndex);
   computeUsersStats(users, progress, courses);
@@ -18,26 +17,18 @@ Promise.all([ // Ejecuta todas las llamadas de manera paralela.
   }
 );
 
-// Buscador de la lista de  cohorts no terminada aun...
-muestraCohorts = (users) => {
-  /* const cohortsId = courses.map(courses => element.id);
-    const contenedor = document.getElementById('cohortsdata');
-    cohortsId.forEach(element => {
-      const item = document.createElement('option');
-      item.innerText = element;
-      contenedor.appendChild(item);
-    }) */
-};
+
 window.computeUsersStats = (users, progress, courses) =>{
   let newUsers = [];
-  users.forEach(user => {
-    let readsCompleted = 0, readsTotal = 0, scoreSumQuizz = 0, scoreAvg = 0,
-      quizzCompleted = 0, quizzTotal = 0, practiceTotal = 0, practiceCompleted = 0, percent = 0;
+  users.forEach(user => { // Recorre users
+    let readsCompleted = 0, readsTotal = 0, scoreSumQuizz = 0, 
+      quizzCompleted = 0, quizzTotal = 0, practiceTotal = 0, practiceCompleted = 0;
     courses.forEach(course => {
-      if (progress[user.id][course]) {
+      if (progress[user.id][course]) { // Entramos a la data
+        // Recupera los valores del objeto y los devuelve en un arreglo
         Object.values(progress[user.id][course].units).forEach(unit => {
           Object.values(unit.parts).forEach(part => {
-            if (part.type === 'read') {
+            if (part.type === 'read') { 
               readsTotal++;
               if (part.completed === 1) {
                 readsCompleted++;
@@ -59,12 +50,13 @@ window.computeUsersStats = (users, progress, courses) =>{
           });
         });
         
-        // Calculo de porcentajes aqui
-        var percentProgress = Math.round((practiceCompleted / practiceTotal ) * 100);
+        // Calculo de porcentajes
+        var percentProgress = Math.round((practiceCompleted / practiceTotal) * 100);
         var percentQuizzes = Math.round((quizzCompleted / quizzTotal) * 100);
         var divQuizzed = Math.round(scoreSumQuizz / quizzCompleted);
         var percentReads = Math.round((readsCompleted / readsTotal) * 100); 
-        user.stats = {
+        // Se les da la propiedad
+        user.stats = { 
           percent: 0,
           exercises: {
             total: practiceTotal,
@@ -96,11 +88,67 @@ window.computeUsersStats = (users, progress, courses) =>{
       newUsers.push(user);
     });
   });
-  console.log(newUsers);
-  console.log("hola")
+  
+  // console.log(newUsers);
   return users;
 };
 
-/* sortUsers(users, orderBy, orderDirection){}
-filterUsers(users, search){}
+
+sortUsers = (users, orderBy, orderDirection) => {
+  let sort = [];
+  if (orderBy === 'name') {
+    if (orderDirection === 'ASC') {
+      sorted = users.sort((ichi, ni) => ichi.name.localeCompare(ni.name));
+    }
+    if (orderDirection === 'DESC') {
+      sorted = users.sort((ichi, ni) => ichi.name.localeCompare(ni.name)).reverse();
+      console.log(orderDirection);
+    }
+  };
+
+  if (orderBy === 'general percent') {
+    if (orderDirection === 'ASC') {
+      sorted = users.sort((ichi, ni) => ichi.stats - ni.stats);
+    }
+    if (orderDirection === 'DESC') {
+      sorted = users.sort((ichi, ni) => ichi.stats - ni.stats).reverse();
+    }
+  };
+  if (orderBy === 'excersices percent') {
+    if (orderDirection === 'ASC') {
+      sorted = users.sort((ichi, ni) => ichi.percentProgress - ni.percentProgress);
+    }
+    if (orderDirection === 'DESC') {
+      sorted = users.sort((ichi, ni) => ichi.percentProgress - ni.percentProgress).reverse();
+    }
+  };
+  if (orderBy === 'quizzes percent') {
+    if (orderDirection === 'ASC') {
+      sorted = users.sort((ichi, ni) => ichi.percentQuizzes - ni.percentQuizzes);
+    }
+    if (orderDirection === 'DESC') {
+      sorted = users.sort((ichi, ni) => ichi.percentQuizzes - ni.percentQuizzes).reverse();
+    }
+  };
+  if (orderBy === 'media quizzes') {
+    if (orderDirection === 'ASC') {
+      sorted = users.sort((ichi, ni) => ichi.divQuizzed - ni.divQuizzed);
+    }
+    if (orderDirection === 'DESC') {
+      sorted = users.sort((ichi, ni) => ichi.divQuizzed - ni.divQuizzed).reverse();
+    }
+  };
+  if (orderBy === 'reads percent') {
+    if (orderDirection === 'ASC') {
+      sorted = users.sort((ichi, ni) => ichi.percentReads - ni.percentReads);
+    }
+    if (orderDirection === 'DESC') {
+      sorted = users.sort((ichi, ni) => ichi.percentReads - ni.percentReads).reverse();
+    }
+  };
+  return sort;
+};
+
+
+/* filterUsers(users, search){}
 processCohortData(options) */
