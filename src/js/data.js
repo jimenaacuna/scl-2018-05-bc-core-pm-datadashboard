@@ -5,68 +5,80 @@ Promise.all([ // Ejecuta todas las llamadas de manera paralela.
 ]).then((responses)=>{ // Responde a todas las promesas.
   return Promise.all(responses.map((response => response.json())));
 }).then((responseJsons)=>{ // Arreglo de respuestas en json.
-
   let users = responseJsons[0];
   let progress = responseJsons[1];
-  let courses = responseJsons[2];
-
- computeUsersStats(users, progress, courses);
- 
+  let cohorts = responseJsons[2];
+  
+  muestraCohorts(users);
+  const cohort = cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
+  const courses = Object.keys(cohort.coursesIndex);
+  computeUsersStats(users, progress, courses);
 }).catch(
   (error)=>{ // Al menos una llamada falló.
   }
 );
 
-
-window.computeUsersStats = (users, progress, courses) => {
-  users.map(user => {
-    courses.map(course => {     
-      if (progress[user.id][course]) {        
+// Buscador de cohorts no terminada aun.
+muestraCohorts = (users) => {
+  /* const cohortsId = courses.map(courses => element.id);
+  const contenedor = document.getElementById('cohortsdata');
+  cohortsId.forEach(element => {
+    const item = document.createElement('option');
+    item.innerText = element;
+    contenedor.appendChild(item);
+  }) */
+};
+computeUsersStats = (users, progress, courses) =>{
+  let newUsers = [];
+  users.forEach(user => {
+    let readsCompleted = 0, readsTotal = 0, scoreSumQuizz = 0, scoreAvg = 0,
+      quizzCompleted = 0, quizzTotal = 0, practiceTotal = 0, practiceCompleted = 0, percent = 0;
+    courses.forEach(course => {
+      if (progress[user.id][course]) {
+        Object.values(progress[user.id][course].units).forEach(unit => {
+          Object.values(unit.parts).forEach(part => {
+            if (part.type === 'read') {
+              readsTotal += 1;
+              if (part.completed === 1) {
+                readsCompleted += 1;
+              }
+            }
+            if (part.type === 'quiz') {
+              quizzTotal += 1;
+              if (part.completed === 1) {
+                quizzCompleted += 1;
+                scoreSumQuizz += part.score;
+              }
+            }
+            if (part.type === 'practice') {
+              practiceTotal += 1;
+              if (part.completed === 1) {
+                practiceCompleted++;
+              }
+            }
+          });
+        });
+        // Calculo de porcentajes aqui
         user.stats = {
-          percent: progress[user.id][course].percent,
+          percent: percent,
           exercises: {
-            total: 0,
-            completed: 0
+            total: practiceTotal,
+            completed: practiceCompleted,
+            percent: Math.round(practiceTotal / practiceCompleted * 100)
           },
           quizzes: {
-            total: 0,
-            completed: 0,
-            scoreSum: 0
+            total: quizzTotal,
+            completed: quizzCompleted,
+            percent: 0,
+            scoreSum: scoreSumQuizz,
+            scoreAvg: 0,
           },
           reads: {
-            total: 0,
-            completed: 0
+            total: readsTotal,
+            completed: readsCompleted,
+            percent: 0,
           },
         };
-
-        // Recupera los valores del objeto y los devuelve en un arreglo
-        Object.values(progress[user.id][course].units).forEach(unit => {
-          Object.values(unit.elements).forEach(element => {
-            switch (element) {             
-            case element.type === 'practice':          
-              user.stats.exercises.total++;
-              user.stats.exercises.completed.push(element.completed);
-            
-            case element.type === 'quiz': 
-              user.stats.quizzes.total++;
-              user.stats.quizzes.completed.push(element.completed);
-            
-            case element.completed: 
-              user.stats.quizzes.scoreSum.push(element.score);
-              
-            case element.type === 'read':
-              user.stats.reads.total++;
-              user.stats.reads.completed.push(element.completed);
-            }
-          }
-          );
-        });
-
-        // Promedio porcentaje
-        user.stats.exercises.percent = Math.round(user.stats.exercises.completed / user.stats.exercises.total * 100);
-        user.stats.quizzes.percent = Math.round(user.stats.quizzes.completed / user.stats.quizzes.total * 100);
-        user.stats.quizzes.scoreAvg = Math.round(user.stats.quizzes.scoreSum / user.stats.quizzes.completed);
-        user.stats.reads.percent = Math.round(user.stats.reads.completed / user.stats.reads.total * 100);
       } else {
         user.stats = {
           percent: 0,
@@ -75,49 +87,11 @@ window.computeUsersStats = (users, progress, courses) => {
           reads: {},
         };
       }
+      // console.log(user)
+      newUsers.push(user);
     });
   });
+  console.log(newUsers);
   return users;
 };
 
-
-window.sortUsers = (users, orderBy, orderDirection) => {
-  if (orderBy === 'name') {
-    return users.sort(orderByName(orderDirection));
-  } else if (orderBy === 'stats.percent') {
-    return users.sort(orderByTotalPercentage(orderDirection));
-  } else {
-    return users.sort(orderByStats(orderBy, orderDirection));
-  }
-};
-
-window.orderByName = (orderDirection) => {
-  return function(student1, student2) {
-    let comparisonResult = student1.name.localeCompare(student2.name);
-    return orderDirection === 'ASC' ? comparisonResult : -comparisonResult;
-  };
-};
-
-window.orderByTotalPercentage = (orderDirection) => {
-  return function(student1, student2) {
-    let comparisonResult = student1.stats.percent - student2.stats.percent;
-    return orderDirection === 'ASC' ? comparisonResult : -comparisonResult;
-  };
-};
-
-window.orderByStats = (orderBy, orderDirection) => {
-  let criteria = orderBy.split('.');
-  return function(student1, student2) {
-    let comparisonResult = student1.stats[quizzes[1]][completed[2]] - student2.stats[quizzes[1]][completed[2]];
-    return orderDirection === 'ASC' ? comparisonResult : -comparisonResult;
-  };
-};
-
-window.filterUsers = (users, search) => {
-  let upperCaseSearch = search.toUpperCase();
-  return users.filter(user => user.name.toUpperCase().includes(upperCaseSearch));
-};
-console.log(window, filterUsers);
-
-
- 
