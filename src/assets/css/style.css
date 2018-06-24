@@ -41,15 +41,17 @@ body{
 /* segunda vista */
 
 .navbar-global {
-background-color: white;
+background-color: #FFE521;
 padding: 0 auto;
 }
 
 img { 
   margin: 4%; 
+ 
   display: block; 
   width: 100%;
   height: auto;
+
 }
 
 .navbar-global .navbar-brand {
@@ -146,12 +148,12 @@ img {
 }
 
 .collapsed + .main-content {
-  margin-left: 60px;
+  margin-left: 6em;
 }
 
 /* tabla */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 38em) {
        table {
            width:100%;
        }
@@ -183,11 +185,11 @@ img {
 /* barra de progreso */
 
 .textbox {
-  height: 600px;
+  height: 38em;
 }
 
 .progress {
-  margin-bottom: 10px;
+  margin-bottom: 1em;
 }
 
 .progress-bar {
