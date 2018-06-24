@@ -181,3 +181,20 @@ img {
 }
   
 
+.textbox {
+  height: 700px;
+}
+
+.progress {
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  width: 0;
+}
+
+#barraProgress{
+  margin-top: 5%;
+  margin-left: 35%;
+
+}
