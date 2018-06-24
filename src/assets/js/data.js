@@ -1,3 +1,23 @@
+Promise.all([ // Ejecuta todas las llamadas de manera paralela.
+  fetch('/data/cohorts/lim-2018-03-pre-core-pw/users.json'),
+  fetch('/data/cohorts/lim-2018-03-pre-core-pw/progress.json'),
+  fetch('/data/cohorts.json')
+]).then((responses)=>{ // Responde a todas las promesas.
+  return Promise.all(responses.map((response => response.json())));
+}).then((responseJsons)=>{ // Arreglo de respuestas en json.
+  let users = responseJsons[0];
+  let progress = responseJsons[1];
+  let cohorts = responseJsons[2];
+  
+  muestraCohorts(users);
+  const cohort = cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
+  const courses = Object.keys(cohort.coursesIndex);
+  computeUsersStats(users, progress, courses);
+}).catch(
+  (error)=>{ // Al menos una llamada falló.
+  }
+);
+
 // Buscador de la lista de  cohorts no terminada aun...
 muestraCohorts = (users) => {
   /* const cohortsId = courses.map(courses => element.id);
@@ -8,7 +28,7 @@ muestraCohorts = (users) => {
       contenedor.appendChild(item);
     }) */
 };
-computeUsersStats = (users, progress, courses) =>{
+window.computeUsersStats = (users, progress, courses) =>{
   let newUsers = [];
   users.forEach(user => {
     let readsCompleted = 0, readsTotal = 0, scoreSumQuizz = 0, scoreAvg = 0,
@@ -18,45 +38,50 @@ computeUsersStats = (users, progress, courses) =>{
         Object.values(progress[user.id][course].units).forEach(unit => {
           Object.values(unit.parts).forEach(part => {
             if (part.type === 'read') {
-              readsTotal += 1;
+              readsTotal++;
               if (part.completed === 1) {
-                readsCompleted += 1;
+                readsCompleted++;
               }
             }
             if (part.type === 'quiz') {
-              quizzTotal += 1;
+              quizzTotal++;
               if (part.completed === 1) {
-                quizzCompleted += 1;
+                quizzCompleted++;
                 scoreSumQuizz += part.score;
               }
             }
             if (part.type === 'practice') {
-              practiceTotal += 1;
+              practiceTotal++;
               if (part.completed === 1) {
                 practiceCompleted++;
               }
             }
           });
         });
+        
         // Calculo de porcentajes aqui
+        var percentProgress = Math.round((practiceCompleted / practiceTotal ) * 100);
+        var percentQuizzes = Math.round((quizzCompleted / quizzTotal) * 100);
+        var divQuizzed = Math.round(scoreSumQuizz / quizzCompleted);
+        var percentReads = Math.round((readsCompleted / readsTotal) * 100); 
         user.stats = {
-          percent: percent,
+          percent: 0,
           exercises: {
             total: practiceTotal,
             completed: practiceCompleted,
-            percent: Math.round(practiceTotal / practiceCompleted * 100)
+            percent: percentProgress
           },
           quizzes: {
             total: quizzTotal,
             completed: quizzCompleted,
-            percent: 0,
+            percent: percentQuizzes,
             scoreSum: scoreSumQuizz,
-            scoreAvg: 0,
+            scoreAvg: divQuizzed
           },
           reads: {
             total: readsTotal,
             completed: readsCompleted,
-            percent: 0,
+            percent: percentReads
           },
         };
       } else {
@@ -72,32 +97,10 @@ computeUsersStats = (users, progress, courses) =>{
     });
   });
   console.log(newUsers);
+  console.log("hola")
   return users;
 };
 
 /* sortUsers(users, orderBy, orderDirection){}
 filterUsers(users, search){}
 processCohortData(options) */
-
-// Función de display navbar
-$('.btn-expand-collapse').click(function(e) {
-  $('.navbar-primary').toggleClass('collapsed');
-});
-  
-  
-var delay = 500;
-$('.progress-bar').each(function(i) {
-  $(this).delay(delay * i).animate({ width: $(this).attr('aria-valuenow') + '%' }, delay);
-  
-  $(this).prop('Counter', 0).animate({
-    Counter: $(this).text()
-  }, {
-    duration: delay,
-    easing: 'swing',
-    step: function(now) {
-      $(this).text(Math.ceil(now) + '%');
-    }
-  });
-});
-   
-
