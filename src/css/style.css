@@ -1,6 +1,8 @@
+
 body{
   font-family: 'Open Sans', sans-serif;
 }
+/* primera vista */
 .container {
   max-width: 65%;
 }
@@ -8,89 +10,35 @@ body{
   color: aqua;
 }
 .btn{
-  position: fixed;
-  top:50%;
-  left: 42%;
-  right: 42%;
   font-size: 20px;
-  
 }
 .dropdown-menu {
-  font-size: 20px;
+  font-size: 15px;
 }
 
-img{
-  position: fixed;
-  left: 24%;
-  right: 24%; 
-  margin-top:60px;
-  width: 40%;
-  
-}
-
-.col-xs-5 , .col-xs-7 {
-  background-color: #EBDF00;
-  color: white;
-  height: 50px;
+.img-fluid{
+  max-width: 100%;
+  margin-top: 110px;
 }
 
 
 
-@media (max-width: 575.98px) {
-  .btn{
-    position: fixed;
-    left: 25%;
-    right: 25%;
-    font-size: 15px;}
-  .img {
-    left: 25%;
-  right: 25%;
-  }  
- 
-}
+@media (max-width: 575.98px) {}
 
 
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .btn{
-    position: fixed;
-    left: 30%;
-    right: 30%;}
-    .img {
-      left: 3%;
-    right: 3%;
-    }
-}
+@media (min-width: 576px) and (max-width: 767.98px) {}
 
 
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .btn{
-    position: fixed;
-    left: 35%;
-    right: 35%;}
-
-    .img {
-      left: 15%;
-    right: 15%;
-    }
-}
+@media (min-width: 768px) and (max-width: 991.98px) {}
 
 
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .btn{
-    position: fixed;
-    left: 40%;
-    right: 40%;} 
-}
+@media (min-width: 992px) and (max-width: 1199.98px) {}
 
 
-@media (min-width: 1200px) {
-  .img {
-    left: 30%;
-  right: 30%;
-  }
-  
-}
+@media (min-width: 1200px) {}
 
+
+/* segunda vista */
 
 .navbar-global {
 background-color: white;
@@ -201,4 +149,52 @@ img {
   margin-left: 60px;
 }
 
+/* tabla */
 
+@media screen and (max-width: 600px) {
+       table {
+           width:100%;
+       }
+       thead {
+           display: none;
+       }
+       tr:nth-of-type(2n) {
+           background-color: inherit;
+       }
+       tr td:first-child {
+           background: #f0f0f0;
+           font-weight:bold;
+           font-size:1.3em;
+       }
+       tbody td {
+           display: block;
+           text-align:center;
+       }
+       tbody td:before {
+           content: attr(data-th);
+           display: block;
+           text-align:center;
+       }
+}
+.tabla{
+  overflow-y: scroll;
+}
+  
+
+.textbox {
+  height: 700px;
+}
+
+.progress {
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  width: 0;
+}
+
+#barraProgress{
+  margin-top: 5%;
+  margin-left: 35%;
+
+}
