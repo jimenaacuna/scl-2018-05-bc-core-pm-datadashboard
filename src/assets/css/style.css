@@ -180,9 +180,10 @@ img {
   overflow-y: scroll;
 }
   
+/* barra de progreso */
 
 .textbox {
-  height: 700px;
+  height: 600px;
 }
 
 .progress {
@@ -194,7 +195,7 @@ img {
 }
 
 #barraProgress{
-  margin-top: 5%;
-  margin-left: 35%;
+  margin-top: 10%;
+  margin-left: 20%;
 
 }
