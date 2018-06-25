@@ -7,40 +7,34 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">  
+  <title>Datadashboard</title>
 
-  <title>Data dashboard</title>
 </head>
 
 <body>
 
+    <div class="col-12 col-md-3 logo">
+        <img src="img/unnamed (1).png">
 
-  <nav class="navbar navbar-inverse navbar-global navbar-fixed-top">
+        <br>
+        <br>
+
+        <div class="container-fluid">
+          <div class="navbar-header">
+          </div>
+          <div id="navbar" class="collapse navbar-collapse">                                                                                                                                                                                                                                                                                                   <ul class="nav navbar-nav navbar-user navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Santhosh Giridara</a></li>
+            <li><a href="#about"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>             
+          </div>
+        </div
     
-    <div class="col-12 col-md-3 logo" col>
-      <img src="img/LABORATORIA (1).png" alt="responsive image">
-      <div class="container-fluid">
-        <div class="navbar-header">
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-user navbar-right">
-            <li>
-              <a href="#">
-                <span class="glyphicon glyphicon-user"></span> Santhosh Giridara</a>
-            </li>
-            <li>
-              <a href="#about">
-                <span class="glyphicon glyphicon-log-out"></span> Logout</a>
-            </li>
-        </div>
-        <!--/.nav-collapse -->
-      </div>
 
       
 
 
 
-  </nav>
+
 
   <nav class="navbar-primary">
     <a href="#" class="btn-expand-collapse">
@@ -69,25 +63,18 @@
     </ul>
   </nav>
 
-  <!-- tabla -->
-  <div class="main-content">
-    <div class="container tabla">
-      <h3>Lista de alumnas</h3>
-      <h5>Selección Cohorts</h5>
-      <select class="form-control" aria-placeholder="haha" id="SeleccionCohorts"></select>
-      <h5>Filtrar Nombre</h5>
-      <select class="form-control" aria-placeholder="haha" id="SeleccionCohorts"></select>
 
-      <table class="table table-striped" class="table table-responsive">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Porcentaje General</th>
-            <th>Lecturas</th>
-            <th>Ejercicios</th>
-            <th>Quizzes</th>
-          </tr>
-        </thead>
+  <article>    
+    <div class="main-content">
+      <div class="container tabla">
+        <h3>Lista de alumnas</h3>
+        <select class="form-control" aria-placeholder="haha" id="seleccionCohorts"></select>
+      </div>
+    </div>
+  </article>
+  
+  <br>
+  <br>
 
         <tbody>
           <div id="tabla">
